@@ -6,12 +6,10 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class Drivetrain extends SubsystemBase {
@@ -23,9 +21,8 @@ public class Drivetrain extends SubsystemBase {
   MotorController m_rearRight;
   MotorControllerGroup m_right;
   DifferentialDrive m_drive;
-  XboxController driver;
-  public Drivetrain(XboxController driver) {
-    this.driver = driver;
+
+  public Drivetrain() {
     m_frontLeft = new CANSparkMax(Constants.DrivetrainConstants.frontLeftMotorID, MotorType.kBrushless);
     m_rearLeft = new CANSparkMax(Constants.DrivetrainConstants.backLeftMotorID, MotorType.kBrushless);
     m_left = new MotorControllerGroup(m_frontLeft, m_rearLeft);
