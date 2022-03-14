@@ -6,9 +6,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.TeleopDrivetrain;
-import frc.robot.subsystems.Arm;
-import frc.robot.subsystems.Drivetrain;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -21,8 +20,10 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final XboxController driver = new XboxController(0);
+  private final XboxController operator = new XboxController(1);
   private final Drivetrain drivetrain = new Drivetrain();
   private final Arm arm = new Arm();
+  private final Intake intake = new Intake();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -39,11 +40,17 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    // While A is pressed, create a new start end command that moves the arm up when initialized and 
+    // While Y is pressed, create a new start end command that moves the arm up when initialized and 
     // stops the motor when the command ends (button is no longer pressed).
-    new JoystickButton(driver, XboxController.Button.kA.value).whileHeld(new StartEndCommand(() -> arm.Up(), () -> arm.Stop(), arm));
-    // same thing except with button b and will move the arm down instead of up.
-    new JoystickButton(driver, XboxController.Button.kB.value).whileHeld(new StartEndCommand(() -> arm.Down(), () -> arm.Stop(), arm));
+    new JoystickButton(operator, XboxController.Button.kY.value).whileHeld(new StartEndCommand(() -> arm.Up(), () -> arm.Stop(), arm));
+    // same thing except with button X and will move the arm down instead of up.
+    new JoystickButton(operator, XboxController.Button.kX.value).whileHeld(new StartEndCommand(() -> arm.Down(), () -> arm.Stop(), arm));
+
+    // While A is pressed, create a new start end command that moves the intake in when initialized and 
+    // stops the motor when the command ends (button is no longer pressed).
+    new JoystickButton(operator, XboxController.Button.kA.value).whileHeld(new StartEndCommand(() -> intake.In(), () -> intake.Stop(), intake));
+    // same thing except with button b and will move the intake out instead of in.
+    new JoystickButton(operator, XboxController.Button.kB.value).whileHeld(new StartEndCommand(() -> intake.Out(), () -> intake.Stop(), intake));
   }
 
   /**

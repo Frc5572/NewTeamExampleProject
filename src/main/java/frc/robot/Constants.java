@@ -25,4 +25,9 @@ public final class Constants {
         public static final int armMotorID = 1;
         public static final double armMotorSpeed = .5;
     }
+    // constants for the intake
+    public static final class IntakeConstants {
+        public static final int intakeMotorID = 1;
+        public static final double intakeMotorSpeed = .5;
+    }
 }
