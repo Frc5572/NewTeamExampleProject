@@ -24,7 +24,7 @@ public class SpitBallBackUp extends SequentialCommandGroup {
         ParallelDeadlineGroup intakeOutHalfSecond = new ParallelDeadlineGroup(new WaitCommand(.5), new StartEndCommand(() -> intake.In(), () -> intake.Stop()));
         // command that creates a parralel deadline group that starts a WaitCommand and StartEndCommand at the same time. The StartEndCommand will set the drivetrain to go backward at negative the speed set in constants. When the WaitCommand reaches its time and ends, it will end the StartEndCommand that will run the code associated with the end value of the command which is to set the drivetrain to zero.
         ParallelDeadlineGroup driveBackwardOneSecond = new ParallelDeadlineGroup(new WaitCommand(2), new StartEndCommand(() -> drivetrain.drive(-Constants.AutoConstants.driveSpeed, -Constants.AutoConstants.driveSpeed), () -> drivetrain.drive(0, 0)));
-        // puts all of the commands declared above and puts them in a SequentialCommandGroup that runs the next command after the one before it finishes. n
+        // puts all of the commands declared above and puts them in a SequentialCommandGroup which runs each command in sequence. Waits until last command has finished before moving on to the next. Ends when final command has ended.
         addCommands(new SequentialCommandGroup(driveForwardOneSecond, intakeOutHalfSecond, driveBackwardOneSecond));
     }
     
