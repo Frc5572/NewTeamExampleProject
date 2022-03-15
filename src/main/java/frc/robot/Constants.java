@@ -30,4 +30,8 @@ public final class Constants {
         public static final int intakeMotorID = 1;
         public static final double intakeMotorSpeed = .5;
     }
+    // constants for autonomous
+    public static final class AutoConstants {
+        public static final double driveSpeed = .5;
+    }
 }

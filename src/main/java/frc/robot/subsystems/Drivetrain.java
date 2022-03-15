@@ -39,7 +39,7 @@ public class Drivetrain extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void joystickInput(double left, double right){
+  public void drive(double left, double right){
     m_drive.tankDrive(left, right);
   }
 

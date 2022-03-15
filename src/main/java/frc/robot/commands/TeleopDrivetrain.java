@@ -33,7 +33,7 @@ public class TeleopDrivetrain extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drivetrain.joystickInput(driver.getLeftY() / 2, driver.getRightY() / 2);
+    drivetrain.drive(driver.getLeftY() / 2, driver.getRightY() / 2);
   }
 
   // Called once the command ends or is interrupted.
