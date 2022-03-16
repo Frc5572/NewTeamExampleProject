@@ -6,8 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.autos.MoveOutBox;
-import frc.robot.autos.SpitBallBackUp;
+import frc.robot.autos.*;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
@@ -63,7 +62,8 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new SpitBallBackUp(drivetrain, intake, arm);
+    return new TwoBallAuto(drivetrain, intake, arm);
+    // return new SpitBallBackUp(drivetrain, intake, arm);
     // return new MoveOutBox(drivetrain);
   }
 }
