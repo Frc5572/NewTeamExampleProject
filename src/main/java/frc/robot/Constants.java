@@ -15,19 +15,19 @@ package frc.robot;
 public final class Constants {
     // constants for drivetrain
     public static final class DrivetrainConstants {
-        public static final int frontLeftMotorID = 1;
-        public static final int frontRightMotorID = 1;
-        public static final int backLeftMotorID = 1;
-        public static final int backRightMotorID = 1;
+        public static final int frontLeftMotorID = 4;
+        public static final int frontRightMotorID = 5;
+        public static final int backLeftMotorID = 2;
+        public static final int backRightMotorID = 3;
     }
     // constants for the arm
     public static final class ArmConstants {
-        public static final int armMotorID = 1;
+        public static final int armMotorID = 6;
         public static final double armMotorSpeed = .5;
     }
     // constants for the intake
     public static final class IntakeConstants {
-        public static final int intakeMotorID = 1;
+        public static final int intakeMotorID = 7;
         public static final double intakeMotorSpeed = .5;
     }
     // constants for autonomous

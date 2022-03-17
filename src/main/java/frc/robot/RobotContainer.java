@@ -11,7 +11,9 @@ import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.lib.AxisButton;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -42,6 +44,7 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    new AxisButton(driver, XboxController.Axis.kRightTrigger.value).whileHeld(new RunCommand(() -> drivetrain.drive(driver.getLeftY() / 4, driver.getRightY() / 4), drivetrain));
     // While Y is pressed, create a new start end command that moves the arm up when initialized and 
     // stops the motor when the command ends (button is no longer pressed).
     new JoystickButton(operator, XboxController.Button.kY.value).whileHeld(new StartEndCommand(() -> arm.Up(), () -> arm.Stop(), arm));
